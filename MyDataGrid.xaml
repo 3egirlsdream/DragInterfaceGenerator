@@ -8,9 +8,9 @@
     <Grid  x:Name="btn">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="100"/>
+            <ColumnDefinition Width="0"/>
         </Grid.ColumnDefinitions>
-        <DataGrid x:Name="grid" Height="100" Grid.Column="0">
+        <DataGrid x:Name="grid" Height="100" Grid.Column="0" BorderThickness="1" BorderBrush="LightGray">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="A"/>
                 <DataGridTextColumn Header="B"/>
@@ -19,7 +19,7 @@
                 <DataGridTextColumn Header="E"/>
             </DataGrid.Columns>
         </DataGrid>
-        <Grid Grid.Column="1">
+        <Grid Grid.Column="1" Visibility="Collapsed">
             <StackPanel>
                 <WrapPanel>
                     <TextBlock Text="高:"/>

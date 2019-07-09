@@ -7,11 +7,11 @@
              mc:Ignorable="d" >
     <Grid  x:Name="btn">
         <WrapPanel>
-            <Border Width="100" Background="White"  Height="30" BorderThickness="1" BorderBrush="Gray">
-                <TextBlock x:Name="tblock"  Text="文本框" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <Border Width="100" Background="White"  Height="30" BorderThickness="1" BorderBrush="LightGray">
+                <TextBlock x:Name="tblock"  Text="文本框" FontFamily="微软雅黑 Light" VerticalAlignment="Center" HorizontalAlignment="Center"/>
             </Border>
             
-            <TextBox x:Name="tb" Width="200" Height="30" BorderBrush="LightGray" BorderThickness="1" IsReadOnly="True"/>
+            <TextBox x:Name="tb" Width="180" Height="30" BorderBrush="LightGray" BorderThickness="1" IsReadOnly="True"/>
         </WrapPanel>
         
     </Grid>

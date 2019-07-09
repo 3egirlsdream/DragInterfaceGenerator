@@ -6,8 +6,8 @@
              xmlns:local="clr-namespace:DragInterfaceGenerator"
              mc:Ignorable="d" >
     <Grid>
-        <Border Name="btn" Height="30" Width="90" Background="Red" CornerRadius="5">
-            <TextBlock x:Name="tb" VerticalAlignment="Center" HorizontalAlignment="Center" Text="按钮" FontFamily="等线" FontSize="14" FontWeight="Bold"/>
+        <Border Name="btn" Height="30" Width="90" Background="White" CornerRadius="0" BorderThickness="1" BorderBrush="LightGray">
+            <TextBlock x:Name="tb" VerticalAlignment="Center" HorizontalAlignment="Center" Text="按钮" FontFamily="微软雅黑 Light" FontSize="14" Foreground="Gray" FontWeight="Bold"/>
         </Border>
     </Grid>
 </UserControl>
