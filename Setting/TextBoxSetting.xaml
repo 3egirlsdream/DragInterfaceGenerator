@@ -20,10 +20,15 @@
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="弹出框类型 "/>
-                <ComboBox x:Name="combobox" Width="100" ItemsSource="{Binding pairs, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectedValuePath="Value" DisplayMemberPath="Key" />
+                <ComboBox x:Name="combobox" Width="100" ItemsSource="{Binding pairs, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedItem, Mode=TwoWay}" SelectedValuePath="Value" DisplayMemberPath="Key" />
             </StackPanel>
             <StackPanel Orientation="Horizontal">
-                <Button Content="保存" Width="100" Click="Button_Click"/>
+                <CheckBox IsChecked="{Binding IsChecked, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                    是否作为API
+                </CheckBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Button Content="保存" Width="100" Command="{Binding CmdSave}"/>
             </StackPanel>
             
         </StackPanel>

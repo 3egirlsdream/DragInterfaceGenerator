@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DragInterfaceGenerator.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -25,6 +26,7 @@ namespace DragInterfaceGenerator
     {
         private string name;
         MyTextBox mytextbox;
+        MyTextBoxVM vm;
         public TextBoxSetting(FrameworkElement name)
         {
             InitializeComponent();
@@ -32,7 +34,9 @@ namespace DragInterfaceGenerator
             this.name = name.Name;
             name_eg.Text = mytextbox.NAME_ENG as string;
             name_zh.Text = mytextbox.tblock.Text as string;
-            LoadComboBox();
+            //LoadComboBox();
+            vm = new MyTextBoxVM(mytextbox, this);
+            DataContext = vm;
         }
 
         public MainWindow ParentWindow { get; set; }
@@ -44,31 +48,13 @@ namespace DragInterfaceGenerator
             this.Visibility = Visibility.Hidden;
             ParentWindow.ccp.Visibility = Visibility.Hidden;
         }
-        private ObservableCollection<KeyValuePair<string, string>> _pairs;
-        public ObservableCollection<KeyValuePair<string, string>> pairs
-        {
-            get
-            {
-                return _pairs;
-            }
-            set
-            {
-                _pairs = value;
-                NotifyPropertyChanged("pairs");
-            }
-        }
+        
         public event PropertyChangedEventHandler PropertyChanged;
         private void NotifyPropertyChanged(string propertyName)
         {
             this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        private void LoadComboBox()
-        {
-            pairs = new ObservableCollection<KeyValuePair<string, string>>()
-            {
-                new KeyValuePair<string, string>("A", "A")
-            };
-        }
+       
     }
 }

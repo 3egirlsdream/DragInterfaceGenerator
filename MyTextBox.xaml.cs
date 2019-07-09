@@ -39,6 +39,8 @@ namespace DragInterfaceGenerator
         public string NAME_ENG { get; set; }
         //弹出框类型
         public string BOX_TYPE { get; set; }
+        //是否作为API
+        public bool IS_API { get; set; }
         private void Btn_MouseMove(object sender, MouseEventArgs e)
         {
             if (e.LeftButton == MouseButtonState.Pressed)

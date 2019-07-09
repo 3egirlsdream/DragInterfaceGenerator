@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DragInterfaceGenerator.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -158,6 +159,7 @@ namespace DragInterfaceGenerator
         /// <param name="e"></param>
         private void Create(object sender, RoutedEventArgs e)
         {
+            //拿到所有边框
             List<MySidebar> sider = new List<MySidebar>();
             foreach(dynamic ds in grid.Children)
             {
@@ -167,6 +169,52 @@ namespace DragInterfaceGenerator
                     sider.Add(ds);
                 }
             }
+
+            List<Grids> grids = new List<Grids>();
+            foreach(var ds in sider)
+            {
+                Grids tmp = new Grids();
+                var borderMargin = getMargin(ds.RenderSize.Width, ds.RenderSize.Height, ds.ActualWidth, ds.ActualHeight);
+
+                foreach (var control in grid.Children)
+                {
+                    var type = control.GetType();
+                    if (type.Name != "MySidebar")//不包含边框元素
+                    {
+                        dynamic obj;
+                        switch (type.Name)
+                        {
+                            case "MyBorder": obj = control as MyBorder;break;
+                            case "MyDataGrid": obj = control as MyDataGrid;break;
+                            case "MyTextBox": obj = control as MyTextBox;break;
+                            default:obj = control as MyBorder;break;
+                        }
+
+                        POSITION margin = getMargin(obj.RenderSize.Width, obj.RenderSize.Height, obj.ActualWidth, obj.ActualHeight);
+
+                        if(obj.btn.Margin.Top > ds.btn.Margin.Top 
+                            && obj.btn.Margin.Left > ds.btn.Margin.Left 
+                            && obj.btn.Margin.Top + obj.btn.ActualHeight < ds.btn.Margin.Top  + ds.btn.ActualHeight
+                            && obj.btn.Margin.Left + obj.btn.ActualWidth < ds.btn.Margin.Left + ds.btn.ActualWidth)
+                        {
+                            tmp.strs.Add(obj.tb.Text);
+                        }
+                    }
+                }
+                grids.Add(tmp);
+            }
         }
+
+
+        private POSITION getMargin(double X, double Y, double aX, double aY)
+        {
+            POSITION pos = new POSITION();
+            pos.LEFT = X - aX;
+            pos.RIGHT = X;
+            pos.TOP = Y - aY;
+            pos.BOTTOM = Y;
+            return pos;
+        }
+        
     }
 }
