@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DragInterfaceGenerator"
         mc:Ignorable="d"
-        Title="MainWindow" Height="800" Width="1400">
+        Title="InterfaceCreater" Height="800" Width="1400">
     <Grid x:Name="father">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -13,18 +13,19 @@
             <ColumnDefinition Width="300"/>
         </Grid.ColumnDefinitions>
         <StackPanel Grid.Column="1">
-            <Button Content="btn" Width="100" Height="40" Click="Button_Click"/>
-            <Button Content="textbox" Width="100" Height="40" Click="Button_Click_1"/>
-            <Button Content="datagrid" Width="100" Height="40" Click="Button_Click_2"/>
-            <Button Content="AddSider" Width="100" Height="40" Click="Button_Click_3"/>
+            <Button Content="Button" Width="100" Height="40" Click="Button_Click"/>
+            <Button Content="TextBox" Width="100" Height="40" Click="Button_Click_1"/>
+            <Button Content="DataGrid" Width="100" Height="40" Click="Button_Click_2"/>
+            <Button Content="Border" Width="100" Height="40" Click="Button_Click_3"/>
+            <Button Content="生成" Width="100" Height="40" Click="Create"/>
         </StackPanel>
 
         <Canvas x:Name="grid" Grid.Column="0">
             
         </Canvas>
 
-        <Grid x:Name="ccp" Grid.Column="2">
-            <ContentControl x:Name="cc"></ContentControl>
+        <Grid x:Name="ccp" Grid.Column="2" Background="Transparent">
+            <ContentControl x:Name="cc" Background="Transparent"></ContentControl>
         </Grid>
     </Grid>
 </Window>

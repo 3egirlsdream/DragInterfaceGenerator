@@ -33,8 +33,8 @@ namespace DragInterfaceGenerator
             
         }
 
-        
-        
+
+        #region
         //private void Btn_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         //{
         //    Border tmp = (Border)sender;
@@ -70,6 +70,8 @@ namespace DragInterfaceGenerator
         //{
 
         //}
+        #endregion
+
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
@@ -114,6 +116,7 @@ namespace DragInterfaceGenerator
             return prex + DateTime.Now.ToString("MMddHHmmss");
         }
 
+        #region 打开控件配置界面
         private void Button_MouseDown(object sender, MouseButtonEventArgs e)
         {
             var obj = sender as FrameworkElement;
@@ -145,6 +148,25 @@ namespace DragInterfaceGenerator
             ccp.Visibility = Visibility;
             cc.Visibility = Visibility.Visible;
             //MessageBox.Show(obj.Name);
+        }
+        #endregion
+
+        /// <summary>
+        /// 生成代码
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Create(object sender, RoutedEventArgs e)
+        {
+            List<MySidebar> sider = new List<MySidebar>();
+            foreach(dynamic ds in grid.Children)
+            {
+                string name = ds.Name as string;
+                if (name.Contains("BAR"))
+                {
+                    sider.Add(ds);
+                }
+            }
         }
     }
 }
